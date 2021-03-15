@@ -247,7 +247,42 @@ server <- function(input, output) {
             addLegend(position = "topright",pal= colorFactor(palette = c('purple'),domain = c("Others")),values = c("Others"),title="Sources")
         })}
     
-      
+      observeEvent(input$reset1, {
+        datastr20<-datast20()
+        output$firstmap <- renderLeaflet({
+          leaflet() %>%
+            addTiles() %>%
+            addCircles(data = datastr20[datastr20$PLGENACL>0,],color='Black')%>%
+            addCircles(data = datastr20[datastr20$PLGENAOL>0,],color='red')%>%
+            addCircles(data = datastr20[datastr20$PLGENAGS>0,],color='green')%>%
+            addCircles(data = datastr20[datastr20$PLGENANC>0,],color='orange')%>%
+            addCircles(data = datastr20[datastr20$PLGENAHY>0,],color='yellow')%>%
+            addCircles(data = datastr20[datastr20$PLGENABM>0,],color='blue')%>%
+            addCircles(data = datastr20[datastr20$PLGENAWI>0,],color='pink')%>%
+            addCircles(data = datastr20[datastr20$PLGENASO>0,],color='brown')%>%
+            addCircles(data = datastr20[datastr20$PLGENAGT>0,],color='#0CA6AC')%>%
+            addCircles(data = datastr20[datastr20$PLGENAOO>0,],color='purple')%>%
+            addLegend(position = "topright",pal =p, values = c("Coal", "Oil", "Gas","Nuclear", "Hydro" ,"Biomass","Wind","Solar", "Geothermal", "Others"),title = "Sources")
+        })
+      })
+      observeEvent(input$reset2, {
+        datastr20<- data2st28()
+        output$secondmap <- renderLeaflet({
+          leaflet() %>%
+            addTiles() %>%
+            addCircles(data = datastr20[datastr20$PLGENACL>0,],color='Black')%>%
+            addCircles(data = datastr20[datastr20$PLGENAOL>0,],color='red')%>%
+            addCircles(data = datastr20[datastr20$PLGENAGS>0,],color='green')%>%
+            addCircles(data = datastr20[datastr20$PLGENANC>0,],color='orange')%>%
+            addCircles(data = datastr20[datastr20$PLGENAHY>0,],color='yellow')%>%
+            addCircles(data = datastr20[datastr20$PLGENABM>0,],color='blue')%>%
+            addCircles(data = datastr20[datastr20$PLGENAWI>0,],color='pink')%>%
+            addCircles(data = datastr20[datastr20$PLGENASO>0,],color='brown')%>%
+            addCircles(data = datastr20[datastr20$PLGENAGT>0,],color='#0CA6AC')%>%
+            addCircles(data = datastr20[datastr20$PLGENAOO>0,],color='purple')%>%
+            addLegend(position = "topright",pal =p, values = c("Coal", "Oil", "Gas","Nuclear", "Hydro" ,"Biomass","Wind","Solar", "Geothermal", "Others"),title = "Sources")
+        })
+      })
       observeEvent(input$reset, {
       
         output$illimap <- renderLeaflet({
